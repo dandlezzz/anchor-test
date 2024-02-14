@@ -48,7 +48,7 @@ runs:
       run: yarn
       shell: bash
     - name: Create keypair
-      run: solana-keygen new --no-bip39-passphrase
+      run: solana-keygen new --no-bip39-passphrase --outfile ${{ inputs.anchor-dir }}/keypair.json
       shell: bash
     - name: Install Cargo toolchain
       uses: actions-rs/toolchain@v1
