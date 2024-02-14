@@ -8,6 +8,10 @@ inputs:
     description: 'Version of node.js to use'
     required: false
     default: '20.11.0' # LTS
+  anchor-dir:
+    description: 'anchor workspace directory'
+    required: false
+    default: '.' # LTS
   solana-cli-version:
     description: 'Version of Solana CLI to use'
     required: false
@@ -56,6 +60,6 @@ runs:
       uses: Swatinem/rust-cache@v2
     - name: Run tests
       run: |
-        cd ${{ github.action_path }} ; anchor test -- --features ${{ inputs.features }}
+        cd ${{ inputs.anchor-dir }} ; anchor test -- --features ${{ inputs.features }}
       shell: bash
 
