@@ -48,6 +48,7 @@ runs:
       shell: bash
     - name: debug
       run: echo $(pwd)
+      shell: bash
     - name: Make Anchor.toml compatible with runner
       run: sed -i.bak -e 's:/user/:/runner/:' -e 's:~/:/runner/:' Anchor.toml && rm Anchor.toml.bak
       shell: bash
