@@ -46,12 +46,6 @@ runs:
     - name: Create keypair
       run: solana-keygen new --no-bip39-passphrase
       shell: bash
-    - name: debug
-      run: echo $(pwd)
-      shell: bash
-    - name: Make Anchor.toml compatible with runner
-      run: sed -i.bak -e 's:/user/:/runner/:' -e 's:~/:/runner/:' Anchor.toml && rm Anchor.toml.bak
-      shell: bash
     - name: Install Cargo toolchain
       uses: actions-rs/toolchain@v1
       with:
