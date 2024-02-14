@@ -23,6 +23,13 @@ inputs:
 runs:
   using: 'composite'
   steps:
+    - uses: actions/checkout@v3
+    - name: Install Yarn
+      run: npm install --global yarn
+    - name: Install Solana
+      uses: metaplex-foundation/actions/install-solana@v1
+      with:
+        version: ${{ inputs.solana-cli-version }}
     - uses: metadaoproject/setup-anchor@v2
       with:
         node-version: ${{ inputs.node-version }}
@@ -39,6 +46,8 @@ runs:
     - name: Create keypair
       run: solana-keygen new --no-bip39-passphrase
       shell: bash
+    - name: debug
+      run: echo $(pwd)
     - name: Make Anchor.toml compatible with runner
       run: sed -i.bak -e 's:/user/:/runner/:' -e 's:~/:/runner/:' Anchor.toml && rm Anchor.toml.bak
       shell: bash
