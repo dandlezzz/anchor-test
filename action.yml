@@ -55,6 +55,7 @@ runs:
     - name: Cache Cargo dependencies
       uses: Swatinem/rust-cache@v2
     - name: Run tests
-      run: anchor test -- --features ${{ inputs.features }}
+      run: |
+        cd ${{ github.action_path }} ; anchor test -- --features ${{ inputs.features }}
       shell: bash
 
