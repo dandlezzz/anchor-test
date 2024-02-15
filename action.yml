@@ -59,7 +59,7 @@ runs:
     - name: Cache Cargo dependencies
       uses: Swatinem/rust-cache@v2
     - name:  Start Local Validator
-      run: solana-test-validator &
+      run: solana-test-validator
     - name: Run tests
       run: |
         cd ${{ inputs.anchor-dir }} ; anchor test --skip-local-validator -- --features ${{ inputs.features }}
